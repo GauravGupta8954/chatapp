@@ -7,28 +7,28 @@ import { Register } from './src/register';
 import { Chatpage } from './src/chatpage';
 import { Testing } from './src/testing';
 import { initializeApp } from "firebase/app";
-
+import { getAuth } from "firebase/auth";
 const Stack=createNativeStackNavigator();
 const firebaseConfig = {
-  apiKey: "AIzaSyDBDxaXOgouCI2raTknR7dVTCFzKEy0QjE",
-  authDomain: "chatapp-4869f.firebaseapp.com",
-  projectId: "chatapp-4869f",
-  storageBucket: "chatapp-4869f.appspot.com",
-  messagingSenderId: "96337731438",
-  appId: "1:96337731438:web:3d9f9fb8a760fbc66e6b7f"
+  apiKey: "AIzaSyBcCRIkP8E1Sq8STWFhJGf31yLt6ivN_mQ",
+  authDomain: "chat-adda-62ba2.firebaseapp.com",
+  projectId: "chat-adda-62ba2",
+  storageBucket: "chat-adda-62ba2.appspot.com",
+  messagingSenderId: "906968723810",
+  appId: "1:906968723810:web:7e7c838f0cbfcb29223c3b"
 };
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 export default function App() {
   
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name='login' component={Login}/>
-        <Stack.Screen name='register' component={Register}/>
-        <Stack.Screen name='Chat' component={Chatpage}/> 
-        <Stack.Screen name='testing' component={Testing}/> 
+        <Stack.Screen name='login' component={Login} options={{headerShown:false}}/>
+        <Stack.Screen name='register' component={Register} options={{headerShown:false}} />
+        <Stack.Screen name='Chat' component={Chatpage} options={{headerShown:false}} /> 
+        <Stack.Screen name='testing' component={Testing} options={{headerShown:false}} /> 
       </Stack.Navigator>
     </NavigationContainer>
   );
