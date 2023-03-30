@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, TextInput, Pressable, TouchableOpacity, Button,
 import React, { useState } from 'react'
 import { Ionicons } from '@expo/vector-icons';
 import { BackgroundScreenRegister } from './backgroundscreen';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../App';
 
 
@@ -15,6 +15,7 @@ export const Register = ({ navigation }) => {
     const [user, setUser] = useState('')
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
+    const url="https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes-thumbnail.png"
     const passvisible = () => {
         if (eyeicon === 'eye') {
             setEyeicon('eye-off')
@@ -37,10 +38,16 @@ export const Register = ({ navigation }) => {
         }
 
         else {
-            createUserWithEmailAndPassword(auth, email, password).then((user) => {
-                setUser(user);
+            createUserWithEmailAndPassword(auth, email, password).then((userCred) => {
+                setUser(userCred);
+                const user = userCred.user;
+                console.log(user);
+                updateProfile(user, {
+                    displayName: name,
+                    photoURL:url,
+                })
                 //setOutput('Register')
-                navigation.navigate("Chat");
+                navigation.navigate("Step2_Register",{email,});
                 //console.log("guptaji")
             }).catch((error) => {
                 console.log(error);
@@ -64,6 +71,7 @@ export const Register = ({ navigation }) => {
 
                         <View style={styles.container}>
                             <View style={styles.text}>
+                                <TextInput style={styles.textinput} placeholder='Enter Name here' value={name} onChangeText={(t) => { setName(t) }} />
                                 <TextInput style={styles.textinput} placeholder='Enter email here' value={email} onChangeText={(t) => { setEmail(t) }} />
                                 <View style={styles.textinputpassword}>
                                     <TextInput

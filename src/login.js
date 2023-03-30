@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, TextInput, Button, TouchableOpacity, Pressable,Image, ImageBackground, ScrollView } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import { Ionicons } from '@expo/vector-icons';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
@@ -32,8 +32,9 @@ export const Login = () => {
             setUser(user);
             //setOutput("successfully login")
             console.log("Logged in");
-            navigation.navigate("Chat");
+            navigation.navigate("UserScreen");
             //console.log("guptaji1")
+            console.log("Login user", user);
         }).catch((error) => {
             console.log(error);
         })
