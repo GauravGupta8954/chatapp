@@ -50,11 +50,10 @@ export const Chatlist = () => {
                 data={user}
                 //keyExtractor={item=item.id}
                 renderItem={({ item }) => {
+                   
                     return (
                         <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                            <TouchableOpacity onPress={() => navigation.navigate('Chat', {
-                                item
-                            })} >
+                            <TouchableOpacity onPress={() => navigation.navigate('Chat', {item })} >
                                 <View style={{
                                     alignItems: 'center', backgroundColor: "lightgreen",
                                     padding: 5, margin: 10, width: 250, borderRadius: 15,

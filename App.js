@@ -17,6 +17,8 @@ import { Chatlist } from './src/chatlist';
 import { Imageadder } from './src/imageadder';
 import { getStorage } from 'firebase/storage';
 import { Imageadder2} from './src/imageadder2';
+import { Camerasetup } from './src/camerasetup';
+
 const Stack=createNativeStackNavigator();
 const firebaseConfig = {
   apiKey: "AIzaSyBcCRIkP8E1Sq8STWFhJGf31yLt6ivN_mQ",
@@ -47,6 +49,7 @@ export default function App() {
         <Stack.Screen name='chatList' component={Chatlist} options={{headerShown:false}} /> 
         <Stack.Screen name='imageadder' component={Imageadder} options={{headerShown:false}} />
         <Stack.Screen name='imageadder2' component={Imageadder2} options={{headerShown:false}} />
+        <Stack.Screen name='camera' component={Camerasetup} options={{headerShown:false}} />
       </Stack.Navigator>
     </NavigationContainer>
   );
