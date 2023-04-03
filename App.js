@@ -18,6 +18,7 @@ import { Imageadder } from './src/imageadder';
 import { getStorage } from 'firebase/storage';
 import { Imageadder2} from './src/imageadder2';
 import { Camerasetup } from './src/camerasetup';
+import { Fullimage } from './src/fullimage';
 
 const Stack=createNativeStackNavigator();
 const firebaseConfig = {
@@ -50,6 +51,7 @@ export default function App() {
         <Stack.Screen name='imageadder' component={Imageadder} options={{headerShown:false}} />
         <Stack.Screen name='imageadder2' component={Imageadder2} options={{headerShown:false}} />
         <Stack.Screen name='camera' component={Camerasetup} options={{headerShown:false}} />
+        <Stack.Screen name='fullimage' component={Fullimage} options={{headerShown:false}} />
       </Stack.Navigator>
     </NavigationContainer>
   );

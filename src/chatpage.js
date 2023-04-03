@@ -30,7 +30,7 @@ export const Chatpage = ({ route ,navigation}) => {
   const userref = collection(db, `chats/${chatId}/messages`)
   const messagesQuery = query(userref, orderBy('timestamp'));
   const messagesEndref = useRef();
-
+  const [link,setLink]=useState(null)
   useEffect(() => {
     const unsubscribe = onSnapshot(messagesQuery, (querySnapshot) => {
       const user = [];
@@ -71,7 +71,7 @@ export const Chatpage = ({ route ,navigation}) => {
     if (user.length > 0) {
       messagesEndref.current.scrollToEnd();
     }
-  }, [press])
+  }, [press,image])
 
 
 
@@ -158,7 +158,7 @@ export const Chatpage = ({ route ,navigation}) => {
   return (
 
     <View style={{ flex: 1 }} >
-      <ImageBackground source={backimage} style={{ flex: 1 }}>
+      <ImageBackground resizeMode="stretch" source={backimage} style={{ flex: 1 }}>
         <View style={{}}>
           <Text style={{ color: '#05445E', fontSize: 35, fontWeight: 'bold', alignSelf: 'center', paddingTop: 30 }}>
             Hi {item.chatName} </Text>
@@ -171,17 +171,21 @@ export const Chatpage = ({ route ,navigation}) => {
           //ref={(ref)=>{listViewref=ref}}
           ref={messagesEndref}
           renderItem={({ item }) => {
+            
             return (
               <View style={isUser(item) ? styles.sender : styles.receiver}>
                 <View style={isUser(item) ? styles.senderName : styles.receiverName}>
                   <Text style={{ fontSize: 15, color: 'white', alignSelf: 'center' }}>{item.name}</Text>
                 </View>
                 <View style={isUser(item) ? styles.senderText : styles.receiverText}>
-
+                
                   {item.imageUrl ?
-                    <Image style={{ height: 100, width: 180, borderWidth: 2, borderColor: 'white' }} source={{
-                      uri: item.imageUrl
-                    }} /> :
+                  <TouchableOpacity onPress={()=>{navigation.navigate("fullimage",{item})}}>
+                   
+                    <Image style={{ height: 100, width: 180, borderWidth: 2, borderColor: 'white' }} 
+                    source={{  uri: item.imageUrl
+                    }} /> 
+                    </TouchableOpacity> :
                     <Text style={{ fontSize: 18, color: 'white', flex: 1 }}>{item.message}</Text>
                   }
                 </View>

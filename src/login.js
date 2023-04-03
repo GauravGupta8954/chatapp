@@ -27,6 +27,24 @@ export const Login = () => {
     }
 
     const onLogin = (email, password) => {
+        if (!email || !password) {
+            // if email or password is empty, show an error message
+            alert("Please enter email and password");
+            return;
+          }
+        
+          if (!/\S+@\S+\.\S+/.test(email)) {
+            // if email is not in a valid format, show an error message
+            alert("Please enter a valid email");
+            return;
+          }
+        
+          if (password.length < 6) {
+            // if password is less than 6 characters, show an error message
+            alert("Password must be at least 6 characters long");
+            return;
+          }
+        
 
         signInWithEmailAndPassword(auth, email, password).then((user) => {
             setUser(user);
@@ -60,6 +78,7 @@ export const Login = () => {
                                 onChangeText={(t) => { setEmail(t) }} />
                             <View style={styles.textinputpassword}>
                                 <TextInput
+                                    autoCapitalize='none'
                                     placeholder="Enter Your Password here"
                                     secureTextEntry={showpass}
                                     value={password}
@@ -70,6 +89,7 @@ export const Login = () => {
                                         <Ionicons style={{ alignSelf: 'flex-end' }} name={eyeicon} size={22} color="black" />
                                     </Pressable>
                                 </View>
+                                
                             </View>
                         </View>
                         <View style={{ padding: 10 }}>

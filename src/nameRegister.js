@@ -64,7 +64,7 @@ export const RegisterStep2 = ({ navigation }) => {
                         <View style={{ padding: 10 }}>
                             <Button title='Final Register' onPress={()=>{registerFinal()}}/>
                         </View>
-                        <View style={{ flexDirection: 'row', justifyContent: 'center', padding: 8 }}>
+                        {/* <View style={{ flexDirection: 'row', justifyContent: 'center', padding: 8 }}>
                             <View>
                                 <Text>Already Registered ? </Text>
                             </View>
@@ -73,7 +73,7 @@ export const RegisterStep2 = ({ navigation }) => {
                                     <Text style={{ color: 'blue' }}>Login</Text>
                                 </TouchableOpacity>
                             </View>
-                        </View>
+                        </View> */}
                     </View>
                 </View>
             </ImageBackground>

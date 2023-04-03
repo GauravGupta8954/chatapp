@@ -80,7 +80,7 @@ export const Chatlist = () => {
                     }}>Want to create New chat!</Text>
                 </TouchableOpacity>
             </View>
-            <View style={{ alignItems: "baseline", alignItems: 'center',paddingTop:100 }}>
+            {/* <View style={{ alignItems: "baseline", alignItems: 'center',paddingTop:100 }}>
                 <TouchableOpacity style={{
                     borderRadius: 10, borderWidth: 1,
                     backgroundColor: '#A1DBF1',
@@ -92,8 +92,8 @@ export const Chatlist = () => {
                         fontWeight: 'bold'
                     }}>image</Text>
                 </TouchableOpacity>
-            </View>
-            <View style={{ alignItems: "baseline", alignItems: 'center',paddingTop:100 }}>
+            </View> */}
+            {/* <View style={{ alignItems: "baseline", alignItems: 'center',paddingTop:100 }}>
                 <TouchableOpacity style={{
                     borderRadius: 10, borderWidth: 1,
                     backgroundColor: '#A1DBF1',
@@ -105,7 +105,7 @@ export const Chatlist = () => {
                         fontWeight: 'bold'
                     }}>image2</Text>
                 </TouchableOpacity>
-            </View>
+            </View> */}
         </View>
     )
 }
