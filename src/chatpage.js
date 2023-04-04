@@ -71,7 +71,7 @@ export const Chatpage = ({ route ,navigation}) => {
     if (user.length > 0) {
       messagesEndref.current.scrollToEnd();
     }
-  }, [press,image])
+  }, [press])
 
 
 
@@ -89,7 +89,7 @@ export const Chatpage = ({ route ,navigation}) => {
       //listViewref.scrollToEnd({animated:true})
 
       console.log("Document written with ID: ", docRef.id);
-
+      setPress(true);
     } catch (e) {
       console.error("Error adding document: ", e);
     }

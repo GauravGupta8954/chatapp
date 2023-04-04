@@ -6,7 +6,29 @@ import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { BackgroundScreenLogin } from './backgroundscreen';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../App';
+import AsyncStorage from "@react-native-async-storage/async-storage"
 
+// const saveUserData = async (userData) => {
+//     try {
+//       await AsyncStorage.setItem('userData', JSON.stringify(userData));
+//       console.log(userData);
+      
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+   
+//   const getUserData = async () => {
+//     try {
+//       const userData = await AsyncStorage.getItem('userData');
+//       if (userData !== null) {
+//         return JSON.parse(userData);
+//       }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+  
 export const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -25,6 +47,16 @@ export const Login = () => {
             setShowpass(false)
         }
     }
+  
+    // useEffect(() => {
+    //     getUserData().then((userData) => {
+    //       if (userData) {
+            
+    //         navigation.replace("UserScreen")
+    //         setUser(userData);
+    //       }
+    //     });
+    //   }, []);
 
     const onLogin = (email, password) => {
         if (!email || !password) {
@@ -48,11 +80,14 @@ export const Login = () => {
 
         signInWithEmailAndPassword(auth, email, password).then((user) => {
             setUser(user);
+           // saveUserData(user);
             //setOutput("successfully login")
             console.log("Logged in");
-            navigation.navigate("UserScreen");
-            //console.log("guptaji1")
+            navigation.replace("UserScreen");
+           // console.log(userData ,"hello")
+            console.log(auth.currentUser.uid)
             console.log("Login user", user);
+            
         }).catch((error) => {
             console.log(error);
         })
@@ -62,21 +97,43 @@ export const Login = () => {
     return (
         <View style={{ flex: 1 }}>
             
-            <ImageBackground source={require('../../chatapp/assets/register.jpg')} style={{ flex: 1 }}>
+            <ImageBackground source={require('../../chatapp/assets/login1.jpg')} style={{ flex: 1 }}>
            
             <View>
                     <Image source={require('../../chatapp/assets/chatlogo.jpg')} 
                     style={{ marginTop:40, height: 150, width: 200,
                      alignSelf: 'center', borderRadius: 80 ,position:'absolute'}} />
                 </View>
-                <View style={styles.container}>
-                    <View style={styles.text}>
+                <View style={{flex: 1,
+        justifyContent: 'center',
+        alignContent: 'center',
+        //backgroundColor: '#E4F4F3'
+        marginTop:35}}>
+                    <View style={{padding: 10,
+        backgroundColor: '#A4E5E0',
+        shadowColor: 'black',
+        elevation: 30,
+        borderRadius: 10,
+        margin: 25}}>
                         <View>
-                            <TextInput style={styles.textinput}
+                            <TextInput style={{borderWidth: 0,
+        borderRadius: 10,
+        margin: 10,
+        padding: 10,
+        backgroundColor: 'white',
+        shadowColor: 'green',
+        elevation: 20}}
                                 placeholder='Enter email here'
                                 value={email}
                                 onChangeText={(t) => { setEmail(t) }} />
-                            <View style={styles.textinputpassword}>
+                            <View style={{borderWidth: 0,
+        borderRadius: 10,
+        margin: 10,
+        padding: 10,
+        backgroundColor: 'white',
+        flexDirection: 'row',
+        shadowColor: 'green',
+        elevation: 20}}>
                                 <TextInput
                                     autoCapitalize='none'
                                     placeholder="Enter Your Password here"
@@ -100,7 +157,7 @@ export const Login = () => {
                                 <Text>Not Registered ? </Text>
                             </View>
                             <View>
-                                <TouchableOpacity onPress={() => { navigation.navigate('register') }}>
+                                <TouchableOpacity onPress={() => { navigation.replace('register') }}>
                                     <Text style={{ color: 'blue' }}>Register</Text>
                                 </TouchableOpacity>
                             </View>
@@ -115,14 +172,14 @@ export const Login = () => {
 }
 
 styles = StyleSheet.create({
-    container: {
+    logincontainer: {
         flex: 1,
         justifyContent: 'center',
         alignContent: 'center',
         //backgroundColor: '#E4F4F3'
         marginTop:35
     },
-    text: {
+    logintext: {
         padding: 10,
         backgroundColor: '#A4E5E0',
         shadowColor: 'black',
@@ -130,7 +187,7 @@ styles = StyleSheet.create({
         borderRadius: 10,
         margin: 25
     },
-    textinput: {
+    logintextinput: {
         borderWidth: 0,
         borderRadius: 10,
         margin: 10,
@@ -139,7 +196,7 @@ styles = StyleSheet.create({
         shadowColor: 'green',
         elevation: 20
     },
-    textinputpassword: {
+    logintextinputpassword: {
         borderWidth: 0,
         borderRadius: 10,
         margin: 10,

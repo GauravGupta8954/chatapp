@@ -13,6 +13,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 export const Camerasetup = ({ route, navigation }) => {
+  
   const { chatId } = route.params;
   //console.log(chatId);
   const [camera, setCamera] = useState(null);
@@ -21,6 +22,7 @@ export const Camerasetup = ({ route, navigation }) => {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
   const [save, setSave] = useState(false)
+  
   useEffect(() => {
     (async () => {
       const cameraStatus = await Camera.requestCameraPermissionsAsync();
@@ -35,7 +37,7 @@ export const Camerasetup = ({ route, navigation }) => {
       console.log(data.uri)
       setImage(data.uri)
       //uploadImage();
-
+     
       //const storage = getStorage();
 
     }

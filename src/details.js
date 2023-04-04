@@ -4,20 +4,23 @@ import { useRoute } from '@react-navigation/native';
 import { auth } from '../App';
 export const Details = ({navigation}) => {
   const route = useRoute();
-  console.log(auth.currentUser.photoURL)
+  //console.log(auth.currentUser.photoURL)
  // const imagevar=require("auth.currentUser.photoURL")
+ console.log("hhhhhhhhhhhh")
+ console.log(auth.currentUser)
+ console.log("auth.currentUser")
   return (
     <View style={{ paddingTop: 100, }}>
       <View style={{
         alignItems: 'center', borderRadius: 10,
         backgroundColor: '#F4F5DC', borderWidth: 1, borderColor: 'black', padding: 10, margin: 15
       }}>
-      <Image
+      {/* <Image
         style={styles.tinyLogo}
         source={{
           uri: auth.currentUser.photoURL
         }}
-      />
+      /> */}
         <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Name : {route.params.item.name}</Text>
         <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Email: {route.params.item.email}</Text>
         <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Id : </Text>

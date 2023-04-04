@@ -7,8 +7,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { BackgroundScreenRegister } from './backgroundscreen';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../App';
- 
-import { addDoc,db,collection,getFirestore } from '../App';
+
+import { addDoc, db, collection, getFirestore } from '../App';
 import { useRoute } from '@react-navigation/native';
 export const RegisterStep2 = ({ navigation }) => {
     const [name, setName] = useState('')
@@ -18,25 +18,25 @@ export const RegisterStep2 = ({ navigation }) => {
     const [showpass, setShowpass] = useState(true)
 
     const [user, setUser] = useState('')
-   // const { email, password } = route.params;
-   const route=useRoute();
-     const myUserUid = auth.currentUser.uid;
+    // const { email, password } = route.params;
+    const route = useRoute();
+    const myUserUid = auth.currentUser.uid;
     //console.log(route.params.email)
     const registerFinal = async () => {
         try {
             const docRef = await addDoc(collection(db, "users"), {
-              name: name,
-              lastname: lastname,
-              phone: phone,
-              uid: myUserUid,
-              email:route.params.email,
-              //photoURL:auth.currentUser.photoURL
+                name: route.params.name,
+                lastname: lastname,
+                phone: phone,
+                uid: myUserUid,
+                email: route.params.email,
+                //photoURL:auth.currentUser.photoURL
             });
             navigation.navigate('UserScreen');
             console.log("Document written with ID: ", docRef.id);
-          } catch (e) {
+        } catch (e) {
             console.error("Error adding document: ", e);
-          }
+        }
     }
 
     return (
@@ -53,16 +53,64 @@ export const RegisterStep2 = ({ navigation }) => {
                         }} />
                 </View>
 
-                <View style={styles.container}>
-                    <View style={styles.text}>
-                        <TextInput style={styles.textinput} placeholder='Enter name here'
-                            value={name} onChangeText={(t) => { setName(t) }} />
-                        <TextInput style={styles.textinput} placeholder='Middle Name + Last Name'
+                <View style={{
+                    flex: 1,
+                    paddingTop: 20,
+                    justifyContent: 'center',
+                    alignContent: 'center',
+                }}>
+                    <View style={{
+                        padding: 10,
+                        backgroundColor: 'lightblue',
+                        shadowColor: 'black',
+                        elevation: 30,
+                        borderRadius: 15,
+                        marginLeft: 25,
+                        marginRight: 25,
+                    }}>
+                        {/* <TextInput style={styles.textinput} placeholder='Enter name here'
+                            value={name} onChangeText={(t) => { setName(t) }} /> */}
+                        <TextInput style={{
+                            borderWidth: 0,
+                            borderRadius: 10,
+                            marginLeft: 10,
+                            marginRight: 10,
+                            padding: 8,
+                            backgroundColor: 'white',
+                            shadowColor: 'green',
+                            elevation: 20
+                        }} placeholder='Middle Name + Last Name'
                             value={lastname} onChangeText={(t) => { setLastName(t) }} />
-                        <TextInput style={styles.textinput} placeholder='Enter Phone no. here'
+                        {lastname ? /^[A-Za-z]+$/.test(lastname) ?
+                            <Text></Text> : <Text style={{ color: 'red', alignSelf: "center", }}> please enter valid lastname </Text>
+                            : <Text style={{ color: 'red', alignSelf: "center", }}></Text>}
+                        <TextInput style={{
+                            borderWidth: 0,
+                            borderRadius: 10,
+                            marginLeft: 10,
+                            marginRight: 10,
+                            padding: 8,
+                            backgroundColor: 'white',
+                            shadowColor: 'green',
+                            elevation: 20
+                        }} placeholder='Enter Phone no. here'
                             value={phone} onChangeText={(t) => { setPhone(t) }} />
+                        {phone ? /^\d{10}$/.test(phone) ?
+                            <Text></Text> : <Text style={{ color: 'red', alignSelf: "center", }}> please enter valid phone no. </Text>
+                            : <Text style={{ color: 'red', alignSelf: "center", }}></Text>}
                         <View style={{ padding: 10 }}>
-                            <Button title='Final Register' onPress={()=>{registerFinal()}}/>
+                            <Button title='Final Register' onPress={() => {
+                                {
+                                    if (lastname && phone) {
+                                        if (/^\d{10}$/.test(phone) && /^[A-Za-z]+$/.test(lastname))
+                                        { registerFinal() }
+                                        else
+                                        alert("Please follow instructions")
+                                    }   
+                                    else
+                                    alert("please fill all details")    
+                                }
+                            }} />
                         </View>
                         {/* <View style={{ flexDirection: 'row', justifyContent: 'center', padding: 8 }}>
                             <View>
@@ -102,23 +150,15 @@ styles = StyleSheet.create({
         // justifyContent: 'center',
         // alignContent: 'center',
     },
-    textinput: {
+    retextinput: {
         borderWidth: 0,
         borderRadius: 10,
-        margin: 10,
+        marginLeft: 10,
+        marginRight: 10,
         padding: 8,
         backgroundColor: 'white',
         shadowColor: 'green',
         elevation: 20
     },
-    textinputpassword: {
-        borderWidth: 0,
-        borderRadius: 10,
-        margin: 10,
-        padding: 8,
-        backgroundColor: 'white',
-        flexDirection: 'row',
-        shadowColor: 'green',
-        elevation: 20
-    }
+
 })
