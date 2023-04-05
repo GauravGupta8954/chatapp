@@ -13,11 +13,12 @@ export const Listpage = ({navigation}) => {
         const unsubscribe = onSnapshot(ref, (querySnapshot) => {
             const user = [];
             querySnapshot.forEach((doc) => {
-                const { email, name } = doc.data();
+                const { email, name ,DailyProfileUrl} = doc.data();
                 user.push({
                     id: doc.id,
                     email,
-                    name
+                    name,
+                    DailyProfileUrl
                 });
             });
             setUser(user)

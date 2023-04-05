@@ -19,6 +19,9 @@ import { getStorage } from 'firebase/storage';
 import { Imageadder2} from './src/imageadder2';
 import { Camerasetup } from './src/camerasetup';
 import { Fullimage } from './src/fullimage';
+import { FaceDetection, Facedetection } from './src/facedetection';
+import { Barcodebuilder } from './src/barcodebuilder';
+import { Detailcamerasetup } from './src/detailcamerasetup';
 
 const Stack=createNativeStackNavigator();
 const firebaseConfig = {
@@ -52,6 +55,9 @@ export default function App() {
         <Stack.Screen name='imageadder2' component={Imageadder2} options={{headerShown:false}} />
         <Stack.Screen name='camera' component={Camerasetup} options={{headerShown:false}} />
         <Stack.Screen name='fullimage' component={Fullimage} options={{headerShown:false}} />
+        <Stack.Screen name='barcode' component={Barcodebuilder} options={{headerShown:false}} />
+        <Stack.Screen name='facedetection' component={FaceDetection} options={{headerShown:false}} />
+        <Stack.Screen name='detailcamerasetup' component={Detailcamerasetup} options={{headerShown:false}} />
       </Stack.Navigator>
     </NavigationContainer>
   );

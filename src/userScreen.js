@@ -29,6 +29,18 @@ export const UserScreen = ({navigation}) => {
            <Text style={{fontSize:22}}>Chat Page </Text>
         </View>
        </TouchableOpacity>
+       <TouchableOpacity onPress={()=>{navigation.navigate('facedetection')}}>
+        <View style={{borderRadius:10,backgroundColor:'lightgreen',
+        width:150,alignItems:'center',padding:10,margin:10,shadowColor:'black',elevation:20}}>
+           <Text style={{fontSize:22}}>Face </Text>
+        </View>
+       </TouchableOpacity>
+       <TouchableOpacity onPress={()=>{navigation.navigate('barcode')}}>
+        <View style={{borderRadius:10,backgroundColor:'lightgreen',
+        width:150,alignItems:'center',padding:10,margin:10,shadowColor:'black',elevation:20}}>
+           <Text style={{fontSize:22}}>barcode </Text>
+        </View>
+       </TouchableOpacity>
        <TouchableOpacity onPress={()=>{{onLogout()}}} 
        style={{justifyContent:'flex-end',flex:1,paddingBottom:20}}>
         <View style={{borderRadius:40,backgroundColor:'lightgreen',
