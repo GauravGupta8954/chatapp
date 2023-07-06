@@ -41,11 +41,12 @@ export const Register = ({ navigation }) => {
         }
 
         else {
+            console.log("name ",name)
             createUserWithEmailAndPassword(auth, email, password).then((userCred) => {
                 setUser(userCred);
                 //const user = userCred.user;
-                console.log(user);
-                updateProfile(user, {
+                console.log("HHKHJLHKLHKLHKHKH",user);
+                updateProfile(userCred.user, {
                     displayName: name,
                     photoURL: url,
                 })
@@ -61,11 +62,11 @@ export const Register = ({ navigation }) => {
     return (
         <View style={{ flex: 1 }}>
 
-            <ImageBackground source={require('../../chatapp/assets/register.jpg')} style={{ flex: 1 }}>
+            <ImageBackground source={require('../assets/register.jpg')} style={{ flex: 1 }}>
 
 
                 <View style={{ paddingTop: 20 }} >
-                    <Image source={require('../../chatapp/assets/chatlogo.jpg')}
+                    <Image source={require('../assets/chatlogo.jpg')}
                         style={{
                             marginTop: 30, height: 150, width: 200,
                             alignSelf: 'center', borderRadius: 80, resizeMode: 'cover', position: 'absolute'

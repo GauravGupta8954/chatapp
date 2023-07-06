@@ -21,7 +21,7 @@ export const RegisterStep2 = ({ navigation }) => {
     // const { email, password } = route.params;
     const route = useRoute();
     const myUserUid = auth.currentUser.uid;
-    //console.log(route.params.email)
+    console.log(route.params.email)
     const registerFinal = async () => {
         try {
             const docRef = await addDoc(collection(db, "users"), {
@@ -42,11 +42,11 @@ export const RegisterStep2 = ({ navigation }) => {
     return (
         <View style={{ flex: 1 }}>
 
-            <ImageBackground source={require('../../chatapp/assets/login1.jpg')} style={{ flex: 1 }}>
+            <ImageBackground source={require('../assets/login1.jpg')} style={{ flex: 1 }}>
 
 
                 <View style={{ paddingTop: 20 }} >
-                    <Image source={require('../../chatapp/assets/chatlogo.jpg')}
+                    <Image source={require('../assets/chatlogo.jpg')}
                         style={{
                             marginTop: 30, height: 150, width: 200,
                             alignSelf: 'center', borderRadius: 80, resizeMode: 'cover', position: 'absolute'

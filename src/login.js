@@ -35,7 +35,7 @@ export const Login = () => {
     const [eyeicon, setEyeicon] = useState("eye-off")
     const [showpass, setShowpass] = useState(true)
     const [user, setUser] = useState('')
-
+    const url = "https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes-thumbnail.png"
     const navigation = useNavigation();
     const passvisible = () => {
         if (eyeicon === 'eye') {
@@ -97,10 +97,10 @@ export const Login = () => {
     return (
         <View style={{ flex: 1 }}>
             
-            <ImageBackground source={require('../../chatapp/assets/login1.jpg')} style={{ flex: 1 }}>
+            <ImageBackground source={require('../assets/login1.jpg')} style={{ flex: 1 }}>
            
             <View>
-                    <Image source={require('../../chatapp/assets/chatlogo.jpg')} 
+                    <Image source={require('../assets/chatlogo.jpg')} 
                     style={{ marginTop:40, height: 150, width: 200,
                      alignSelf: 'center', borderRadius: 80 ,position:'absolute'}} />
                 </View>

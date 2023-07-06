@@ -17,7 +17,7 @@ import {
   uploadBytesResumable, getDownloadURL, uploadBytes, firebase, blob,
 } from "firebase/storage";
 export const Chatpage = ({ route ,navigation}) => {
-  const backimage = require('../../chatapp/assets/chat3.jpg')
+  const backimage = require('../assets/chat3.jpg')
   const [currentDate, setCurrentDate] = useState('');
   const [data, setData] = useState('')
   const [press, setPress] = useState(true);
@@ -31,6 +31,7 @@ export const Chatpage = ({ route ,navigation}) => {
   const messagesQuery = query(userref, orderBy('timestamp'));
   const messagesEndref = useRef();
   const [link,setLink]=useState(null)
+  
   useEffect(() => {
     const unsubscribe = onSnapshot(messagesQuery, (querySnapshot) => {
       const user = [];
@@ -161,7 +162,7 @@ export const Chatpage = ({ route ,navigation}) => {
       <ImageBackground resizeMode="stretch" source={backimage} style={{ flex: 1 }}>
         <View style={{}}>
           <Text style={{ color: '#05445E', fontSize: 35, fontWeight: 'bold', alignSelf: 'center', paddingTop: 30 }}>
-            Hi {item.chatName} </Text>
+            {item.chatName} </Text>
           {/* <Button title='Register2' onPress={()=>{navigation.navigate('Step2_Register')}}/> */}
         </View>
         <FlatList
