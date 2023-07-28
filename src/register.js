@@ -1,6 +1,6 @@
 import {
     View, Text, StyleSheet, TextInput, Pressable, TouchableOpacity,
-    Button, ImageBackground, Image, ScrollView
+    Button, ImageBackground, Image, ScrollView,ToastAndroid
 } from 'react-native'
 import React, { useState } from 'react'
 import { Ionicons } from '@expo/vector-icons';
@@ -45,16 +45,30 @@ export const Register = ({ navigation }) => {
             createUserWithEmailAndPassword(auth, email, password).then((userCred) => {
                 setUser(userCred);
                 //const user = userCred.user;
-                console.log("HHKHJLHKLHKLHKHKH",user);
+               // console.log("HHKHJLHKLHKLHKHKH",user);
                 updateProfile(userCred.user, {
                     displayName: name,
                     photoURL: url,
                 })
                 //setOutput('Register')
                 navigation.replace("Step2_Register", { email, name });
+                ToastAndroid.showWithGravityAndOffset(
+                    'Registered Successfully',
+                     ToastAndroid.LONG,
+                     ToastAndroid.BOTTOM,
+                     25,
+                     50,
+                   );
                 //console.log("guptaji")
             }).catch((error) => {
-                console.log(error);
+              
+                ToastAndroid.showWithGravityAndOffset(
+                    error.toString(),
+                     ToastAndroid.LONG,
+                     ToastAndroid.BOTTOM,
+                     25,
+                     50,
+                   );
             })
         }
     }

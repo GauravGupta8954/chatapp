@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity,ToastAndroid } from 'react-native'
 import React from 'react'
 import { signOut } from "firebase/auth";
 import { auth } from '../App';
@@ -9,10 +9,23 @@ export const UserScreen = ({navigation}) => {
        
       signOut(auth).then(() => {
          // Sign-out successful.
-         console.log("logout")
+         //console.log("logout")
+         ToastAndroid.showWithGravityAndOffset(
+            "Logout",
+             ToastAndroid.LONG,
+             ToastAndroid.BOTTOM,
+             25,
+             50,
+           );
          navigation.replace("login")
        }).catch((error) => {
-        console.log(error)
+         ToastAndroid.showWithGravityAndOffset(
+            error.toString(),
+             ToastAndroid.LONG,
+             ToastAndroid.BOTTOM,
+             25,
+             50,
+           );
        });
    }
   return (

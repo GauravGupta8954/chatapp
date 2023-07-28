@@ -89,7 +89,7 @@ export const Chatpage = ({ route ,navigation}) => {
       setPress(false);
       //listViewref.scrollToEnd({animated:true})
 
-      console.log("Document written with ID: ", docRef.id);
+     // console.log("Document written with ID: ", docRef.id);
       setPress(true);
     } catch (e) {
       console.error("Error adding document: ", e);
@@ -110,7 +110,7 @@ export const Chatpage = ({ route ,navigation}) => {
       quality: 1,
     });
 
-    console.log(result);
+   // console.log(result);
 
     if (!result.canceled) {
       setImage(result.uri);
@@ -122,7 +122,7 @@ export const Chatpage = ({ route ,navigation}) => {
         const storageRef = ref(storage, `gaurav/${Date.now()}`);
         uploadTask = await uploadBytesResumable(storageRef, blob);
         url = await getDownloadURL(storageRef)
-        console.log(url)
+       // console.log(url)
         showimage();
 
       }
@@ -144,7 +144,7 @@ export const Chatpage = ({ route ,navigation}) => {
       setPress(false);
       //listViewref.scrollToEnd({animated:true})
 
-      console.log("Document written with ID: ", docRef.id);
+      //console.log("Document written with ID: ", docRef.id);
 
     } catch (e) {
       console.error("Error adding document: ", e);

@@ -54,12 +54,12 @@ export default function App() {
         <Stack.Screen name='imageadder' component={Imageadder} options={{headerShown:false}} />
         <Stack.Screen name='imageadder2' component={Imageadder2} options={{headerShown:false}} />
         <Stack.Screen name='camera' component={Camerasetup} options={{headerShown:false}} />
-        <Stack.Screen name='fullimage' component={Fullimage} options={{headerShown:false}} />
-        
+        <Stack.Screen name='fullimage' component={Fullimage} options={{headerShown:false}} />       
         <Stack.Screen name='facedetection' component={FaceDetection} options={{headerShown:false}} />
         <Stack.Screen name='detailcamerasetup' component={Detailcamerasetup} options={{headerShown:false}} />
       </Stack.Navigator>
     </NavigationContainer>
+   
   );
 }
 

@@ -1,4 +1,5 @@
-import { View, Text, StyleSheet, TextInput, Button, TouchableOpacity, Pressable,Image, ImageBackground, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, TextInput, Button, TouchableOpacity, Pressable,Image, ImageBackground,
+     ScrollView, ToastAndroid } from 'react-native'
 import React, { useState ,useEffect} from 'react'
 import { Ionicons } from '@expo/vector-icons';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -82,14 +83,27 @@ export const Login = () => {
             setUser(user);
            // saveUserData(user);
             //setOutput("successfully login")
-            console.log("Logged in");
+           // console.log("Logged in");
             navigation.replace("UserScreen");
            // console.log(userData ,"hello")
-            console.log(auth.currentUser.uid)
-            console.log("Login user", user);
-            
+            // console.log(auth.currentUser.uid)
+            // console.log("Login user", user);
+            ToastAndroid.showWithGravityAndOffset(
+               "Logged in Successfully",
+                ToastAndroid.LONG,
+                ToastAndroid.BOTTOM,
+                25,
+                50,
+              );
         }).catch((error) => {
-            console.log(error);
+            console.log(error.toString());
+            ToastAndroid.showWithGravityAndOffset(
+                error.toString(),
+                 ToastAndroid.LONG,
+                 ToastAndroid.BOTTOM,
+                 25,
+                 50,
+               );
         })
     }
 
